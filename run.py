@@ -21,7 +21,6 @@ args = parser.parse_args()
 
 input_file = os.path.join(settings['input_path'], args.input_file)
 model_file = os.path.join(settings['model_path'], args.S)
-merge_model_file = os.path.join(settings['model_path'], args.merge)
 
 data = None
 m = None
