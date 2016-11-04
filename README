@@ -1,0 +1,4 @@
+markov
+by Calvin Koder
+
+markov is a multi-level markov chain simulator. It parses through space deliniated sample input, generating a model. The model can be run to produce an output similar to the input. Models can be saved as .json files for future use.
