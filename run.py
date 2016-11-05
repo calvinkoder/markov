@@ -12,6 +12,7 @@ parser.add_argument('-S', default = '', metavar = 'save_model', help = 'Filename
 parser.add_argument('-l', default = 1, type = int, metavar='level', help = 'Specify the level of the model (How many nodes per data group)')
 parser.add_argument('-delay', default = 0, type = float, help = 'time delay between print statements, in milliseconds')
 parser.add_argument('-timeout', default = 0, type = float, help = 'maximum running duration')
+parser.add_argument('-maxlen', default = 0, type = int, help = 'Maximum number of words in output')
 
 settings = {}
 with open('config.json', 'r') as f:
@@ -54,13 +55,18 @@ else:
 
 	print(group,end=' ')
 
-	while args.timeout == 0 or time.time() - start < args.timeout:
+	count = 0
+
+	while (args.timeout == 0 or time.time() - start < args.timeout) and count <= args.maxlen:
 		group = m.walk(group)
 
 		if not group:
 			break
 
 		print(group[-1],end=' ',flush=True)
+
+		if args.maxlen != 0:
+			count +=1
 
 		time.sleep(args.delay/1000)
 
