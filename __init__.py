@@ -1,1 +1,1 @@
-from markov import Group, Model
+from .markov import Group, Model
