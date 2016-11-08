@@ -52,10 +52,7 @@ if args.S:
 
 #run model indefinitely, print output
 else:
-
-	group_name = random.choice(list(m.model.keys()))
-	group = Group(group_name.split(' '))
-
+	group = m.random_group()
 	start = time.time()
 
 	print(group,end=' ')
