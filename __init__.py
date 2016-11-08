@@ -25,7 +25,7 @@ class Group:
 class Model:
 	model = {}
 	node_count = {}
-	def __init__(self, data, level=1):
+	def __init__(self, data, level = 1):
 		self.level = level
 
 		if type(data) == dict:
@@ -81,3 +81,7 @@ class Model:
 					r-=odds
 
 		return None
+
+	def random_group(self):
+		group_name = random.choice(list(self.model.keys()))
+		return Group(group_name.split(' '))
