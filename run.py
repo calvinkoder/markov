@@ -35,9 +35,7 @@ def loop(model, delay = 0, timeout = 0, maxlen = 0, output_file = ''):
 
 	print()
 
-def run(data, output_file = '', output_as_model = False, merge_model = None, level = 1,  delay = 0, timeout = 0, maxlen = 0):
-	model = Model(data, level)
-
+def run(model, output_file = '', output_as_model = False, merge_model = None,  delay = 0, timeout = 0, maxlen = 0):
 	if merge_model:
 		model += merge_model
 
@@ -62,7 +60,6 @@ def load_input(input_file, input_as_model = False):
 			return Group(data.split(' '))
 
 def main(input_file, settings = {}, input_as_model = False, output_file = '', output_as_model = False, merge_model_file = '', level = 1, delay = 0, timeout = 0, maxlen = 0):
-	data = None
 	merge_model = None
 
 	if input_as_model:
@@ -79,8 +76,8 @@ def main(input_file, settings = {}, input_as_model = False, output_file = '', ou
 		with open(merge_model_file, 'r') as f:
 			merge_model = Model(json.load(f))
 
-	data = load_input(input_file)
-	run(data, output_file, output_as_model, merge_model, level, delay, timeout, maxlen)
+	model = Model(load_input(input_file), level)
+	run(model, output_file, output_as_model, merge_model, level, delay, timeout, maxlen)
 
 if __name__ == '__main__':
 	CONFIG_FILE = 'config.json'
